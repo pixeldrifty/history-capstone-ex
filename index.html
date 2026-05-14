@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Modern Law and Ancient Greek Law — Similarities and Differences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#FFCC00;
+  --gold-dark:#c9a000;
+  --ink:#111010;
+  --charcoal:#222;
+  --warm-gray:#6b6560;
+  --pale:#f7f5f2;
+  --cream:#fffef9;
+  --border:#ddd8d0;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --condensed:'Barlow Condensed',Arial,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--pale)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* ══════════ NAV ══════════ */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;padding:0 1.5rem;
+  border-bottom:1px solid #333;
+}
+.nav-left{display:flex;align-items:center;gap:12px}
+.logo-box{
+  width:34px;height:34px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-box svg{width:18px;height:18px}
+.logo-wordmark{
+  font-family:var(--condensed);font-size:.72rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff;line-height:1.2;
+}
+.logo-wordmark span{display:block;color:#aaa;font-weight:400;letter-spacing:.14em;font-size:.65rem}
+.nav-right{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#888;
+}
+.nav-pill{
+  display:inline-block;border:1px solid #444;padding:3px 10px;
+  color:#ccc;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-family:var(--condensed);font-weight:700;
+}
+
+/* ══════════ HERO ══════════ */
+.hero{
+  position:relative;width:100%;
+  height:min(75vh,640px);
+  background:#0b0a08;
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-scene{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;justify-content:center;
+  overflow:hidden;
+}
+/* Atmospheric gradient */
+.hero-scene::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 100%, rgba(20,15,5,1) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(40,30,10,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 0%, rgba(10,15,30,0.7) 0%, transparent 60%);
+  z-index:2;
+}
+.hero-sky{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    #0d1520 0%,
+    #1a2535 25%,
+    #2a3040 50%,
+    #1a1508 80%,
+    #0b0a06 100%);
+}
+/* Stars */
+.hero-stars{position:absolute;inset:0;z-index:1}
+.hero-stars::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,220,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 8%, rgba(255,255,220,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 20%, rgba(255,255,220,.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 5%, rgba(255,255,220,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 18%, rgba(255,255,220,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 10%, rgba(255,255,220,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 35%, rgba(255,255,220,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 30%, rgba(255,255,220,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 25%, rgba(255,255,220,.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 5% 5%, rgba(255,220,160,.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 12%, rgba(255,220,160,.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 95% 8%, rgba(255,220,160,.7) 0%, transparent 100%);
+}
+/* Acropolis silhouette built from CSS */
+.acropolis{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:min(900px,100%);z-index:1;
+}
+.hill{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:700px;height:180px;
+  background:linear-gradient(180deg,#1e1a12 0%,#0f0d08 100%);
+  clip-path:ellipse(50% 100% at 50% 100%);
+}
+.parthenon{position:absolute;bottom:165px;left:50%;transform:translateX(-50%);width:280px}
+.p-steps{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0;
+}
+.p-step{background:#1e1a12;height:5px;margin-bottom:0}
+.p-step:nth-child(1){width:310px}
+.p-step:nth-child(2){width:295px;margin-top:4px}
+.p-step:nth-child(3){width:282px;margin-top:4px}
+.p-columns{
+  position:absolute;bottom:13px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;align-items:flex-end;
+}
+.p-col{
+  width:14px;
+  background:linear-gradient(90deg,#2a2418 0%,#3a3028 40%,#2a2418 100%);
+  border-radius:1px 1px 0 0;
+}
+.p-entablature{
+  position:absolute;left:50%;transform:translateX(-50%);
+  background:#1e1a12;height:22px;
+  border-top:3px solid #2a2418;
+}
+.p-pediment{
+  position:absolute;left:50%;transform:translateX(-50%);
+  background:#1a1610;
+  clip-path:polygon(0% 100%,50% 0%,100% 100%);
+}
+/* Moon glow */
+.moon{
+  position:absolute;top:8%;left:15%;
+  width:70px;height:70px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,#fff9e0,#d4c060 40%,#8a7020 80%,transparent 100%);
+  box-shadow:0 0 40px 20px rgba(212,192,96,.15),0 0 80px 40px rgba(212,192,96,.08);
+  z-index:1;
+}
+.hero-overlay{position:absolute;inset:0;z-index:3;pointer-events:none}
+.hero-caption{
+  position:absolute;bottom:.75rem;right:1rem;z-index:10;
+  color:rgba(255,255,255,.35);font-family:var(--condensed);font-size:.62rem;
+  letter-spacing:.08em;
+}
+
+/* ══════════ ARTICLE HEADER ══════════ */
+.article-header{
+  max-width:800px;margin:0 auto;
+  padding:3.5rem 2rem 1.5rem;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1.6rem;
+}
+.eyebrow-tag{
+  background:var(--ink);color:var(--gold);
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:4px 12px;
+}
+.eyebrow-line{flex:1;height:1px;background:var(--border)}
+
+.article-title{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,5.5vw,3.6rem);
+  font-weight:900;line-height:1.08;
+  color:var(--ink);margin-bottom:1.4rem;
+  letter-spacing:-.02em;
+}
+.article-deck{
+  font-family:var(--body);font-size:1.18rem;
+  font-style:italic;font-weight:300;
+  color:var(--warm-gray);line-height:1.65;
+  margin-bottom:2rem;padding-bottom:2rem;
+  border-bottom:2.5px solid var(--ink);
+}
+.byline-strip{
+  display:flex;align-items:center;gap:1rem;
+  padding-bottom:2rem;border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.byline-avatar{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#c9a840,#7a6020);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;color:#fff;font-size:.95rem;
+}
+.byline-info{font-family:var(--condensed);font-size:.82rem}
+.byline-name{font-weight:700;color:var(--ink);letter-spacing:.04em}
+.byline-meta{color:var(--warm-gray);letter-spacing:.04em}
+.byline-sep{color:var(--border)}
+
+/* ══════════ BODY ══════════ */
+.article-body{max-width:800px;margin:0 auto;padding:0 2rem 5rem}
+
+/* Section divider */
+.section-divider{
+  display:flex;align-items:center;gap:1rem;
+  margin:4rem 0 1.8rem;
+}
+.sd-label{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--warm-gray);
+  white-space:nowrap;
+}
+.sd-line{flex:1;height:1px;background:var(--border)}
+.sd-dot{width:5px;height:5px;background:var(--gold);flex-shrink:0}
+
+h2.s-title{
+  font-family:var(--serif);
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  font-weight:700;line-height:1.18;
+  margin-bottom:1.3rem;letter-spacing:-.01em;
+}
+.article-body p{
+  margin-bottom:1.4rem;
+  font-size:1.02rem;color:var(--charcoal);
+  font-weight:300;
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote{
+  position:relative;
+  border-left:4px solid var(--gold);
+  padding:1.2rem 0 1.2rem 2rem;
+  margin:2.8rem 0;
+}
+.pull-quote::before{
+  content:'\201C';
+  position:absolute;top:-.5rem;left:1.5rem;
+  font-family:var(--serif);font-size:5rem;line-height:1;
+  color:var(--gold);opacity:.25;pointer-events:none;
+}
+.pull-quote blockquote{
+  font-family:var(--serif);font-size:1.4rem;font-style:italic;
+  font-weight:400;line-height:1.5;color:var(--ink);
+  margin-bottom:.6rem;
+}
+.pull-quote cite{
+  font-family:var(--condensed);font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--warm-gray);
+  font-style:normal;
+}
+
+/* ── FIGURE CARDS ── */
+.region-label{
+  font-family:var(--condensed);font-size:.72rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);
+  margin:2.2rem 0 1rem;display:flex;align-items:center;gap:.6rem;
+}
+.region-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.figures-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+  gap:1.2rem;margin-bottom:2.5rem;
+}
+.fig-card{border:1px solid var(--border);background:#fff;overflow:hidden;transition:box-shadow .25s}
+.fig-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.fig-art{
+  width:100%;height:155px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:3.5rem;font-weight:900;
+  color:rgba(255,255,255,.5);position:relative;overflow:hidden;
+  letter-spacing:-.02em;
+}
+.fig-art::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4) 100%);
+}
+.art-solon    {background:linear-gradient(140deg,#1e3a2a,#0d2018)}
+.art-cleist   {background:linear-gradient(140deg,#2a1e3a,#180d28)}
+.art-pericles {background:linear-gradient(140deg,#3a2e0a,#201a04)}
+.art-coke     {background:linear-gradient(140deg,#0a1e3a,#041228)}
+.art-black    {background:linear-gradient(140deg,#1a1a3a,#0a0a22)}
+.art-rbg      {background:linear-gradient(140deg,#0a2e1e,#041c10)}
+.fig-body{padding:1rem 1.1rem 1.3rem}
+.fig-era{
+  font-family:var(--condensed);font-size:.62rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.3rem;
+}
+.fig-name{
+  font-family:var(--serif);font-size:1.15rem;font-weight:700;
+  margin-bottom:.55rem;line-height:1.2;
+}
+.fig-desc{
+  font-family:var(--body);font-size:.86rem;color:var(--warm-gray);
+  line-height:1.55;font-weight:300;
+}
+
+/* ── CALLOUT BOX ── */
+.callout{
+  background:var(--pale);border-top:3px solid var(--gold);
+  padding:1.6rem 1.8rem;margin:2.5rem 0;
+}
+.callout-label{
+  font-family:var(--condensed);font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.5rem;
+}
+.callout p{
+  font-family:var(--serif);font-size:1.05rem;
+  color:var(--charcoal);margin-bottom:0!important;font-weight:400;
+}
+
+/* ── STORY CARDS ── */
+.story-card{
+  display:grid;grid-template-columns:5px 1fr;
+  border:1px solid var(--border);background:#fff;
+  margin:2rem 0;overflow:hidden;
+  transition:box-shadow .25s;
+}
+.story-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.story-bar{background:var(--gold)}
+.story-body{padding:1.6rem 1.8rem}
+.story-eyebrow{
+  font-family:var(--condensed);font-size:.62rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.4rem;
+}
+.story-body h3{
+  font-family:var(--serif);font-size:1.5rem;font-weight:700;
+  margin-bottom:.75rem;line-height:1.2;
+}
+.story-body p{font-size:.97rem!important;margin-bottom:0!important}
+
+/* ── COMPARISON TABLE ── */
+.table-wrap{overflow-x:auto;margin:2rem 0 3rem}
+table{
+  width:100%;border-collapse:collapse;
+  font-size:.9rem;min-width:500px;
+}
+thead tr{background:var(--ink)}
+th{
+  padding:.9rem 1.1rem;text-align:left;
+  font-family:var(--condensed);font-size:.68rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:#fff;
+}
+th:first-child{color:var(--gold)}
+td{
+  padding:.8rem 1.1rem;border-bottom:1px solid var(--border);
+  font-family:var(--body);font-size:.9rem;color:var(--charcoal);
+  vertical-align:top;line-height:1.55;font-weight:300;
+}
+tr:nth-child(even) td{background:var(--pale)}
+td:first-child{font-weight:600;color:var(--ink);white-space:nowrap;font-family:var(--condensed);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+
+/* ── SOURCES ── */
+.sources{
+  margin-top:3.5rem;padding-top:1.8rem;
+  border-top:1px solid var(--border);
+}
+.sources h4{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.8rem;
+}
+.sources p{font-size:.85rem!important;color:var(--warm-gray)!important;margin-bottom:.4rem!important;font-style:italic}
+
+/* ══════════ FOOTER ══════════ */
+footer{
+  background:var(--ink);color:#666;
+  text-align:center;padding:2.5rem 1.5rem;
+  font-family:var(--condensed);font-size:.72rem;letter-spacing:.1em;
+}
+.footer-logo{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:1rem;
+}
+.footer-logo-box{
+  width:26px;height:26px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+}
+.footer-logo-box svg{width:14px;height:14px}
+.footer-brand{color:#ccc;font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:.72rem}
+.footer-divider{margin:0 .5rem;color:#444}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-up{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:640px){
+  .article-header,.article-body{padding-left:1.2rem;padding-right:1.2rem}
+  .figures-grid{grid-template-columns:1fr 1fr}
+  th,td{padding:.65rem .75rem}
+  .pull-quote blockquote{font-size:1.18rem}
+  .moon{width:50px;height:50px}
+}
+@media(max-width:420px){
+  .figures-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8" stroke="#111" stroke-width="1.5"/>
+        <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="#111" stroke-width="1.5"/>
+        <line x1="2" y1="10" x2="18" y2="10" stroke="#111" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="logo-wordmark">
+      History &amp; Law
+      <span>Student Essay</span>
+    </div>
+  </div>
+  <div class="nav-pill">Culture &amp; Society</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-scene">
+    <div class="hero-sky"></div>
+    <div class="hero-stars"></div>
+    <div class="moon"></div>
+
+    <!-- Acropolis silhouette -->
+    <div class="acropolis" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;z-index:1">
+      <!-- Hill -->
+      <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(800px,110%);height:200px;background:linear-gradient(180deg,#1a1610 0%,#0d0b08 100%);clip-path:ellipse(50% 100% at 50% 100%)"></div>
+      <!-- Retaining wall / platform -->
+      <div style="position:absolute;bottom:185px;left:50%;transform:translateX(-50%);width:340px;height:12px;background:#16130e"></div>
+      <!-- Step 1 -->
+      <div style="position:absolute;bottom:180px;left:50%;transform:translateX(-50%);width:370px;height:8px;background:#1a1610"></div>
+      <!-- Step 2 -->
+      <div style="position:absolute;bottom:173px;left:50%;transform:translateX(-50%);width:355px;height:8px;background:#161310"></div>
+      <!-- Step 3 (stylobate) -->
+      <div style="position:absolute;bottom:166px;left:50%;transform:translateX(-50%);width:342px;height:8px;background:#1a1610"></div>
+      <!-- Columns row -->
+      <div style="position:absolute;bottom:175px;left:50%;transform:translateX(-50%);display:flex;gap:5px;align-items:flex-end">
+        <!-- 11 columns -->
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
+      </div>
+      <!-- Entablature -->
+      <div style="position:absolute;bottom:264px;left:50%;transform:translateX(-50%);width:348px;height:20px;background:#161310;border-top:3px solid #1e1a12"></div>
+      <!-- Frieze -->
+      <div style="position:absolute;bottom:284px;left:50%;transform:translateX(-50%);width:348px;height:14px;background:#18150f"></div>
+      <!-- Pediment -->
+      <div style="position:absolute;bottom:298px;left:50%;transform:translateX(-50%);width:348px;height:40px;background:#14110c;clip-path:polygon(0% 100%,50% 0%,100% 100%)"></div>
+    </div>
+
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Hero text -->
+  <div style="position:relative;z-index:10;width:100%;padding:0 2rem 3rem;max-width:800px;margin:0 auto">
+    <div style="font-family:var(--condensed);font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Culture &amp; History</div>
+    <div style="font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.7);max-width:480px;line-height:1.5">From Athens to the modern courtroom — two visions of justice</div>
+  </div>
+
+  <div class="hero-caption">The Acropolis of Athens, 5th century BCE &nbsp;·&nbsp; Illustration</div>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="eyebrow">
+    <div class="eyebrow-tag">Law &amp; Society</div>
+    <div class="eyebrow-line"></div>
+  </div>
+  <h1 class="article-title">How Are Modern Law and Ancient Greek Law Similar or Different?</h1>
+  <p class="article-deck">From the assembly hills of Athens to today's courtrooms, the pursuit of justice has never ceased — but its form has transformed across two and a half millennia.</p>
+  <div class="byline-strip">
+    <div class="byline-avatar">S</div>
+    <div class="byline-info">
+      <div class="byline-name">Student Essay</div>
+      <div class="byline-meta">History &amp; Law <span class="byline-sep">|</span> May 2026 <span class="byline-sep">|</span> 8 min read</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- INTRODUCTION -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Introduction</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 class="s-title fade-up">What Is the Difference Between Modern-Day Law and Law in Ancient Greece?</h2>
+
+  <p class="fade-up">In modern times, the law is a legal system designed to keep order, protect people and their rights, and ensure justice is fairer for everyone. Through courts, written statutes, and government institutions, it can be applied to large populations.</p>
+
+  <p class="fade-up">In contrast, ancient Greece hosted a plethora of legal systems depending on the region — however, this essay will focus mainly on ancient Athens, as it was where most of the legal developments were made. Athens didn't employ typical democracy as we know it today, but instead used <em>demokratia</em>. Within this system only citizens who were adult males met in an assembly around 40 times a year to debate, present ideas, and vote.</p>
+
+  <div class="pull-quote fade-up">
+    <blockquote>While both modern and Athenian legal systems sought to maintain order, they contrast largely in their structure and inclusivity.</blockquote>
+  </div>
+
+  <!-- KEY FIGURES -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Key Figures</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 class="s-title fade-up">The Architects of Law</h2>
+
+  <p class="fade-up">Both ancient Athenian democracy and modern legal systems were shaped by towering individuals whose ideas outlived them by centuries — from Athenian reformers who dismantled aristocratic power to modern jurists who expanded equality before the law.</p>
+
+  <div class="region-label fade-up">Ancient Greece</div>
+
+  <div class="figures-grid">
+    <div class="fig-card fade-up">
+      <div class="fig-art art-solon">Σ</div>
+      <div class="fig-body">
+        <div class="fig-era">Lawmaker · c. 638–558 BCE</div>
+        <div class="fig-name">Solon</div>
+        <p class="fig-desc">Laid the foundations for Athenian democracy by introducing sweeping legal reforms against aristocratic dominance and debt-slavery, including the landmark "shaking off of burdens." His concern for the hereditary aristocracy's stranglehold drove him to restructure Athenian society.</p>
+      </div>
+    </div>
+    <div class="fig-card fade-up">
+      <div class="fig-art art-cleist">Κ</div>
+      <div class="fig-body">
+        <div class="fig-era">Reformer · c. 570–507 BCE</div>
+        <div class="fig-name">Cleisthenes</div>
+        <p class="fig-desc">Focused on political restructuring rather than social reform. In 508 BCE he organized citizens into ten tribes based on local <em>demes</em> rather than aristocratic clans — a deliberate stroke to dismantle inherited power through geographic reorganization.</p>
+      </div>
+    </div>
+    <div class="fig-card fade-up">
+      <div class="fig-art art-pericles">Π</div>
+      <div class="fig-body">
+        <div class="fig-era">Statesman · c. 495–429 BCE</div>
+        <div class="fig-name">Pericles</div>
+        <p class="fig-desc">Grew Athenian democracy not by expanding the citizen body, but by enabling more effective participation within it. He shifted power from aristocrats to the Assembly and Council, and stripped the Areopagus — a council dominated by the aristocracy — of most of its political strength.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="region-label fade-up">Modern Day</div>
+
+  <div class="figures-grid">
+    <div class="fig-card fade-up">
+      <div class="fig-art art-coke">C</div>
+      <div class="fig-body">
+        <div class="fig-era">Common Law · 1552–1634</div>
+        <div class="fig-name">Sir Edward Coke</div>
+        <p class="fig-desc">One of the most influential common-law jurists in English history, Coke championed the idea that common law stood above even the king — laying crucial groundwork for constitutional governance and individual rights that echo through modern legal systems today.</p>
+      </div>
+    </div>
+    <div class="fig-card fade-up">
+      <div class="fig-art art-black">B</div>
+      <div class="fig-body">
+        <div class="fig-era">Common Law · 1723–1780</div>
+        <div class="fig-name">William Blackstone</div>
+        <p class="fig-desc">His <em>Commentaries on the Laws of England</em> systematized English common law for the first time, becoming the foundational legal text for both British and American jurisprudence — cementing written codification as the backbone of modern law.</p>
+      </div>
+    </div>
+    <div class="fig-card fade-up">
+      <div class="fig-art art-rbg">R</div>
+      <div class="fig-body">
+        <div class="fig-era">Equality Law · 1933–2020</div>
+        <div class="fig-name">Ruth Bader Ginsburg</div>
+        <p class="fig-desc">As a Supreme Court Justice and pioneering litigator, RBG systematically dismantled gender-based discrimination — pushing the law toward the inclusivity that ancient Athenian <em>demokratia</em> so conspicuously lacked.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMILARITIES -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Similarities</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 class="s-title fade-up">Shared Foundations Across Two Millennia</h2>
+
+  <p class="fade-up">While ancient Greece — specifically Athens — is often credited with inventing democracy, its form of <em>demokratia</em> was highly unequal, favoring male citizens while excluding slaves, women, foreigners, and, to a lesser degree, <em>metics</em> (registered foreigners with limited legal rights). Interestingly, prominent figures such as Plato, Socrates, and Aristotle — who was himself a metic — appeared largely neutral on this hierarchy, as they did not openly challenge the division between citizens and metics.</p>
+
+  <div class="callout fade-up">
+    <div class="callout-label">Key Connection</div>
+    <p>Athenian courts provided a formal space for resolving disputes, replacing the cycle of family feuds and private revenge between families — an idea we take entirely for granted in modern legal systems.</p>
+  </div>
+
+  <p class="fade-up">Despite these inequalities, Athenian legal systems — such as the Draconian constitution — introduced several ideas that continue to shape modern legal thought: laws were meant to be publicly known, not hidden; legal decisions were meant to follow rules rather than someone's whim; and citizens could participate in legal judgment, giving a sense of civic involvement.</p>
+
+  <p class="fade-up">Ancient Greek law was often less centralized than modern law. However, Athens stood out due to its transparent legislation and public courts, alongside introducing many ideas we now take entirely for granted.</p>
+
+  <!-- STRANGE OCCURRENCES -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Strange Occurrences</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 class="s-title fade-up">When the Law Met the Extraordinary</h2>
+
+  <p class="fade-up">Even within a system striving for order and reason, ancient Athens produced legal moments that defy modern expectation — revealing the limits, freedoms, and worldview woven into Athenian justice.</p>
+
+  <div class="story-card fade-up">
+    <div class="story-bar"></div>
+    <div class="story-body">
+      <div class="story-eyebrow">399 BCE &nbsp;·&nbsp; Athens</div>
+      <h3>The Trial of Socrates</h3>
+      <p>One of the strangest trials within the Athenian democracy was that of Socrates. Why would an elderly philosopher charged with corrupting the youth — despite years of public teaching that had gone mostly unprosecuted — be condemned to death? Born to a sculptor and a midwife, Socrates came of age during Pericles' "Golden Age," an era that paradoxically produced both extraordinary intellectual freedom and this extraordinary verdict. During his trial he offered public honors or a fine as alternatives; the court refused and sentenced him to death, which he calmly accepted. Later, sitting in his cell drinking the hemlock provided to him, his friends urged him to escape. He refused, as he believed it would violate the laws of Athens and betray his own principles. (Linder)</p>
+    </div>
+  </div>
+
+  <div class="story-card fade-up">
+    <div class="story-bar"></div>
+    <div class="story-body">
+      <div class="story-eyebrow">Thasos &nbsp;·&nbsp; Date Uncertain</div>
+      <h3>The Statue Put on Trial</h3>
+      <p>This story was said to have happened in Thasos — not Athens, but a city that maintained close political and cultural ties to it. One of the more remarkable stories in Pausanias's <em>Description of Greece</em> (Book 6) recounts the fate of Theagenes of Thasos, a famous boxer celebrated for his extraordinary prowess and countless victories — and his considerable list of rivals. After his death, a statue was erected in his honor. One of his rivals visited the statue each night and whipped it out of spite; one night, the statue fell upon the rival, killing him. The Thasians, drawing on a local tradition, allowed the family of the deceased to demand the statue be put on trial. Cases such as these reveal that even as the Greeks strove to build a just legal system, considerable freedoms remained — including the right to propose an alternative sentence, or to try an inanimate object for homicide.</p>
+    </div>
+  </div>
+
+  <!-- DIFFERENCES -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Differences</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 class="s-title fade-up">Where the Two Systems Diverge</h2>
+
+  <p class="fade-up">Unlike modern-day law, where legislation is made by elected representatives, Athenian laws were made directly by citizens within the assembly. Athenian courts also used very large juries composed mostly of regular citizens — and that same group could decide both the facts and the legal outcome. Modern systems separate judges, juries, and legal rules far more clearly.</p>
+
+  <div class="pull-quote fade-up">
+    <blockquote>"The Athenian popular courts drew no distinction between evidence relevant to guilt and evidence relevant to sentencing."</blockquote>
+    <cite>Lanni, 2006</cite>
+  </div>
+
+  <p class="fade-up">Athenian laws were publicly displayed on stone tablets for all to read, while modern laws are codified through statutes, legal codes, and official publications — publicly accessible, but far more voluminous and specialized. Where Athens relied on the direct, active voice of its (limited) citizen body, modern democracies operate through representative institutions at a scale unimaginable to any Athenian.</p>
+
+  <div class="table-wrap fade-up">
+    <table>
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Ancient Athens</th>
+          <th>Modern Law</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Who Makes Laws</td>
+          <td>Male citizens directly in the Assembly</td>
+          <td>Elected representatives and legislators</td>
+        </tr>
+        <tr>
+          <td>Jury System</td>
+          <td>Large popular juries; citizens decide facts and sentence</td>
+          <td>Smaller juries; judge and jury roles separated</td>
+        </tr>
+        <tr>
+          <td>Publication of Laws</td>
+          <td>Inscribed on stone in public spaces</td>
+          <td>Codified statutes and official legal publications</td>
+        </tr>
+        <tr>
+          <td>Inclusivity</td>
+          <td>Limited to adult male citizens; excluded women, slaves, foreigners</td>
+          <td>Applies to all persons regardless of gender or origin</td>
+        </tr>
+        <tr>
+          <td>Evidence Rules</td>
+          <td>No separation between guilt evidence and sentencing evidence</td>
+          <td>Strict rules of evidence; separate sentencing phase</td>
+        </tr>
+        <tr>
+          <td>Centralization</td>
+          <td>Decentralized; varied by city-state</td>
+          <td>Centralized national and international legal frameworks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources fade-up">
+    <h4>Sources</h4>
+    <p>Lanni, A. (2006). <em>Law and Justice in the Courts of Classical Athens.</em> Cambridge University Press.</p>
+    <p>Linder, D. O. <em>The Trial of Socrates.</em> Famous Trials Project.</p>
+    <p>Pausanias. <em>Description of Greece,</em> Book 6.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-box">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8" stroke="#111" stroke-width="1.5"/>
+        <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="#111" stroke-width="1.5"/>
+        <line x1="2" y1="10" x2="18" y2="10" stroke="#111" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <span class="footer-brand">History &amp; Law</span>
+  </div>
+  <div>
+    Essay<span class="footer-divider">·</span>May 2026<span class="footer-divider">·</span>Culture &amp; Society
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
