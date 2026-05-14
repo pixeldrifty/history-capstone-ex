@@ -282,9 +282,10 @@ h2.s-title{
   letter-spacing:-.02em;
 }
 .fig-art::after{
-  content:'';position:absolute;inset:0;
+  content:'';position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4) 100%);
 }
+.fig-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;z-index:0}
 .art-solon    {background:linear-gradient(140deg,#1e3a2a,#0d2018)}
 .art-cleist   {background:linear-gradient(140deg,#2a1e3a,#180d28)}
 .art-pericles {background:linear-gradient(140deg,#3a2e0a,#201a04)}
@@ -432,45 +433,11 @@ footer{
 <!-- HERO -->
 <div class="hero">
   <div class="hero-scene">
-    <div class="hero-sky"></div>
-    <div class="hero-stars"></div>
-    <div class="moon"></div>
-
-    <!-- Acropolis silhouette -->
-    <div class="acropolis" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;z-index:1">
-      <!-- Hill -->
-      <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(800px,110%);height:200px;background:linear-gradient(180deg,#1a1610 0%,#0d0b08 100%);clip-path:ellipse(50% 100% at 50% 100%)"></div>
-      <!-- Retaining wall / platform -->
-      <div style="position:absolute;bottom:185px;left:50%;transform:translateX(-50%);width:340px;height:12px;background:#16130e"></div>
-      <!-- Step 1 -->
-      <div style="position:absolute;bottom:180px;left:50%;transform:translateX(-50%);width:370px;height:8px;background:#1a1610"></div>
-      <!-- Step 2 -->
-      <div style="position:absolute;bottom:173px;left:50%;transform:translateX(-50%);width:355px;height:8px;background:#161310"></div>
-      <!-- Step 3 (stylobate) -->
-      <div style="position:absolute;bottom:166px;left:50%;transform:translateX(-50%);width:342px;height:8px;background:#1a1610"></div>
-      <!-- Columns row -->
-      <div style="position:absolute;bottom:175px;left:50%;transform:translateX(-50%);display:flex;gap:5px;align-items:flex-end">
-        <!-- 11 columns -->
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-        <div style="width:12px;height:90px;background:linear-gradient(90deg,#252018 0%,#302a1c 45%,#252018 100%);border-radius:1px 1px 0 0"></div>
-      </div>
-      <!-- Entablature -->
-      <div style="position:absolute;bottom:264px;left:50%;transform:translateX(-50%);width:348px;height:20px;background:#161310;border-top:3px solid #1e1a12"></div>
-      <!-- Frieze -->
-      <div style="position:absolute;bottom:284px;left:50%;transform:translateX(-50%);width:348px;height:14px;background:#18150f"></div>
-      <!-- Pediment -->
-      <div style="position:absolute;bottom:298px;left:50%;transform:translateX(-50%);width:348px;height:40px;background:#14110c;clip-path:polygon(0% 100%,50% 0%,100% 100%)"></div>
-    </div>
-
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg/1200px-1029_Acropolis_of_Athens_in_Greece_at_night_Photo_by_Giles_Laurent.jpg"
+      alt="Acropolis of Athens at night"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;display:block"
+    />
     <div class="hero-overlay"></div>
   </div>
 
@@ -480,7 +447,7 @@ footer{
     <div style="font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.7);max-width:480px;line-height:1.5">From Athens to the modern courtroom — two visions of justice</div>
   </div>
 
-  <div class="hero-caption">The Acropolis of Athens, 5th century BCE &nbsp;·&nbsp; Illustration</div>
+  <div class="hero-caption">Acropolis of Athens at night &nbsp;·&nbsp; Photo: Giles Laurent / Wikimedia Commons</div>
 </div>
 
 <!-- ARTICLE HEADER -->
@@ -535,7 +502,7 @@ footer{
 
   <div class="figures-grid">
     <div class="fig-card fade-up">
-      <div class="fig-art art-solon">Σ</div>
+      <div class="fig-art art-solon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Ignoto%2C_c.d._solone%2C_replica_del_90_dc_ca_da_orig._greco_del_110_ac._ca%2C_6143.JPG/400px-Ignoto%2C_c.d._solone%2C_replica_del_90_dc_ca_da_orig._greco_del_110_ac._ca%2C_6143.JPG" alt="Bust of Solon"/></div>
       <div class="fig-body">
         <div class="fig-era">Lawmaker · c. 638–558 BCE</div>
         <div class="fig-name">Solon</div>
@@ -543,7 +510,7 @@ footer{
       </div>
     </div>
     <div class="fig-card fade-up">
-      <div class="fig-art art-cleist">Κ</div>
+      <div class="fig-art art-cleist"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Cleisthenes.jpg/400px-Cleisthenes.jpg" alt="Bust of Cleisthenes"/></div>
       <div class="fig-body">
         <div class="fig-era">Reformer · c. 570–507 BCE</div>
         <div class="fig-name">Cleisthenes</div>
@@ -551,7 +518,7 @@ footer{
       </div>
     </div>
     <div class="fig-card fade-up">
-      <div class="fig-art art-pericles">Π</div>
+      <div class="fig-art art-pericles"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pericles_Pio-Clementino_Inv269_n2.jpg/400px-Pericles_Pio-Clementino_Inv269_n2.jpg" alt="Bust of Pericles"/></div>
       <div class="fig-body">
         <div class="fig-era">Statesman · c. 495–429 BCE</div>
         <div class="fig-name">Pericles</div>
@@ -564,7 +531,7 @@ footer{
 
   <div class="figures-grid">
     <div class="fig-card fade-up">
-      <div class="fig-art art-coke">C</div>
+      <div class="fig-art art-coke"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Edward_Coke.jpg/400px-Edward_Coke.jpg" alt="Portrait of Sir Edward Coke"/></div>
       <div class="fig-body">
         <div class="fig-era">Common Law · 1552–1634</div>
         <div class="fig-name">Sir Edward Coke</div>
@@ -572,7 +539,7 @@ footer{
       </div>
     </div>
     <div class="fig-card fade-up">
-      <div class="fig-art art-black">B</div>
+      <div class="fig-art art-black"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Sir_William_Blackstone_from_NPG.jpg/400px-Sir_William_Blackstone_from_NPG.jpg" alt="Portrait of William Blackstone"/></div>
       <div class="fig-body">
         <div class="fig-era">Common Law · 1723–1780</div>
         <div class="fig-name">William Blackstone</div>
@@ -580,7 +547,7 @@ footer{
       </div>
     </div>
     <div class="fig-card fade-up">
-      <div class="fig-art art-rbg">R</div>
+      <div class="fig-art art-rbg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Ruth_Bader_Ginsburg_2016_portrait.jpg/400px-Ruth_Bader_Ginsburg_2016_portrait.jpg" alt="Portrait of Ruth Bader Ginsburg"/></div>
       <div class="fig-body">
         <div class="fig-era">Equality Law · 1933–2020</div>
         <div class="fig-name">Ruth Bader Ginsburg</div>
