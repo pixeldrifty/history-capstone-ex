@@ -292,6 +292,35 @@ h2.s-title{
 .art-coke     {background:linear-gradient(140deg,#0a1e3a,#041228)}
 .art-black    {background:linear-gradient(140deg,#1a1a3a,#0a0a22)}
 .art-rbg      {background:linear-gradient(140deg,#0a2e1e,#041c10)}
+/* ── TABLE OF CONTENTS ── */
+.toc{
+  border:1px solid var(--border);border-top:3px solid var(--ink);
+  padding:1.6rem 1.8rem;margin:2rem 0 2.5rem;background:#fff;
+}
+.toc-label{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);
+  margin-bottom:1rem;
+}
+.toc ol{list-style:none;counter-reset:toc-counter}
+.toc li{
+  counter-increment:toc-counter;
+  display:flex;align-items:baseline;gap:.6rem;
+  padding:.35rem 0;border-bottom:1px solid var(--border);
+}
+.toc li:last-child{border-bottom:none}
+.toc li::before{
+  content:counter(toc-counter,'decimal-leading-zero');
+  font-family:var(--condensed);font-size:.7rem;font-weight:700;
+  color:var(--gold-dark);flex-shrink:0;letter-spacing:.04em;
+}
+.toc a{
+  font-family:var(--condensed);font-size:.92rem;font-weight:600;
+  color:var(--ink);text-decoration:none;letter-spacing:.02em;
+  transition:color .15s;
+}
+.toc a:hover{color:var(--gold-dark)}
+
 .fig-body{padding:1rem 1.1rem 1.3rem}
 .fig-era{
   font-family:var(--condensed);font-size:.62rem;font-weight:700;
@@ -474,6 +503,20 @@ footer{
 <!-- ARTICLE BODY -->
 <main class="article-body">
 
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc fade-up">
+    <div class="toc-label">In This Essay</div>
+    <ol>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#para1">How Laws Were Created in Athens vs Today</a></li>
+      <li><a href="#para2">Who Had Rights and Who Was Excluded</a></li>
+      <li><a href="#para3">Important Figures Who Shaped Both Systems</a></li>
+      <li><a href="#para4">Strange Occurrences in the Athenian Legal System</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#works-cited">Works Cited</a></li>
+    </ol>
+  </div>
+
   <!-- INTRODUCTION -->
   <div class="section-divider fade-up">
     <div class="sd-dot"></div>
@@ -481,7 +524,7 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">What Is the Difference Between Modern-Day Law and Law in Ancient Greece?</h2>
+  <h2 id="intro" class="s-title fade-up">What Is the Difference Between Modern-Day Law and Law in Ancient Greece?</h2>
 
   <p class="fade-up">In modern times, the law is a legal system designed to maintain order, protect individuals and their rights, and ensure justice is applied fairly. Through courts, written statutes, and government institutions, it can be applied to large populations.</p>
 
@@ -498,7 +541,7 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">How Laws Were Created in Athens vs Today</h2>
+  <h2 id="para1" class="s-title fade-up">How Laws Were Created in Athens vs Today</h2>
 
   <p class="fade-up">Unlike modern day where laws are made by legislators, ancient Athens' laws were made by citizens within the assembly. Another striking difference is that, compared to today, Athenian courts generally used, often times, very large juries devised mostly of regular citizens, and that same group could decide both facts and the legal outcome; modern systems usually separate judges, juries, and legal rules more clearly. Athenian laws were publicly displayed on stone, while modern laws are distinguished by statutes, codes, and official legal publications.</p>
 
@@ -514,7 +557,7 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">Who Had Rights and Who Was Excluded</h2>
+  <h2 id="para2" class="s-title fade-up">Who Had Rights and Who Was Excluded</h2>
 
   <p class="fade-up">While ancient Greece, specifically Athens, is often credited with having invented democracy, its form of <em>demokratia</em> was highly unequal, favoring male citizens while excluding slaves, women, foreigners, and, to a lesser degree, metics (registered foreigners with limited legal rights). Interestingly, prominent figures such as Plato, Socrates, and Aristotle (who himself was a metic) appeared largely neutral on this hierarchy, as they did not openly challenge the division between citizens and metics.</p>
 
@@ -525,7 +568,7 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">Important Figures Who Shaped Both Systems</h2>
+  <h2 id="para3" class="s-title fade-up">Important Figures Who Shaped Both Systems</h2>
 
   <div class="region-label fade-up">Ancient Greece</div>
 
@@ -598,7 +641,7 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">Strange Occurrences in the Athenian Legal System</h2>
+  <h2 id="para4" class="s-title fade-up">Strange Occurrences in the Athenian Legal System</h2>
 
   <div class="story-card fade-up">
     <div class="story-bar"></div>
@@ -626,13 +669,13 @@ footer{
     <div class="sd-line"></div>
   </div>
 
-  <h2 class="s-title fade-up">Conclusion</h2>
+  <h2 id="conclusion" class="s-title fade-up">Conclusion</h2>
 
   <p class="fade-up">Despite these inequalities, Athenian legal systems, such as the draconian constitution, introduced several ideas that continue to influence modern legal thought. Laws were meant to be publicly known and not hidden, and legal decisions were meant to follow rules instead of someone's whim. Citizens were able to participate in legal judgement, giving a sense of civic involvement. Courts also provided a formal space for resolving disputes, replacing family feuds which were a cycle of private revenge between families. One thing to note, however, was that Ancient Greek law was often less centralized compared to modern day. In contrast, Athens stood out due to its transparent legislation and public courts, alongside introducing many ideas of which we now take for granted.</p>
 
   <!-- SOURCES -->
   <div class="sources fade-up">
-    <h4>Works Cited</h4>
+    <h4 id="works-cited">Works Cited</h4>
     <p>AAUW. "The Lasting Legacy of Justice Ruth Bader Ginsburg." <em>AAUW</em>, 23 September 2020, https://www.aauw.org/resources/news/the-lasting-legacy-of-justice-ruth-bader-ginsburg/.</p>
     <p>Devereaux, Bret. "How to Polis 101, Part IIc: The Courts." <em>A Collection of Unmitigated Pedantry</em>, 6 April 2023.</p>
     <p>Editorial. "Key Figures in Common Law: Influential Legal Pioneers." <em>Laws Learned</em>, Laws Learned, 11 July 2024, https://lawslearned.com/key-figures-in-common-law/. Accessed 11 May 2026.</p>
