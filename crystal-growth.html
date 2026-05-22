@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Crystal Growth Study — Potassium Alum — Ceejay Velardi</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#FFCC00;
+  --gold-dark:#c9a000;
+  --ink:#111010;
+  --charcoal:#222;
+  --warm-gray:#6b6560;
+  --pale:#f7f5f2;
+  --cream:#fffef9;
+  --border:#ddd8d0;
+  --teal:#00b4b4;
+  --teal-dark:#007a7a;
+  --serif:'Playfair Display',Georgia,serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --condensed:'Barlow Condensed',Arial,sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;height:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw;min-height:100%;display:flex;flex-direction:column;word-wrap:break-word;overflow-wrap:break-word}
+main{flex:1}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--pale)}
+::-webkit-scrollbar-thumb{background:var(--teal)}
+
+/* ══════════ NAV ══════════ */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;padding:0 1.5rem;
+  border-bottom:1px solid #333;
+}
+.nav-left{display:flex;align-items:center;gap:12px}
+.logo-box{
+  width:34px;height:34px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-box svg{width:18px;height:18px}
+.logo-wordmark{
+  font-family:var(--condensed);font-size:.72rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff;line-height:1.2;
+}
+.logo-wordmark span{display:block;color:#aaa;font-weight:400;letter-spacing:.14em;font-size:.65rem}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.nav-pill{
+  display:inline-block;border:1px solid #444;padding:3px 10px;
+  color:#ccc;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-family:var(--condensed);font-weight:700;
+  text-decoration:none;transition:border-color .2s,color .2s;
+}
+.nav-pill:hover{border-color:#888;color:#fff}
+
+/* ══════════ HERO ══════════ */
+.hero{
+  position:relative;width:100%;
+  height:min(72vh,600px);
+  background:#04111a;
+  overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  z-index:0;display:block;
+  filter:saturate(1.2) brightness(.55);
+}
+/* deep overlay for text legibility */
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(4,17,26,.4) 0%,transparent 35%,transparent 55%,rgba(4,17,26,.95) 100%),
+    linear-gradient(90deg,rgba(4,17,26,.5) 0%,transparent 60%);
+}
+/* decorative lattice lines */
+.hero-lattice{
+  position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;
+  opacity:.18;
+}
+.hero-lattice::before{
+  content:'';position:absolute;
+  width:320px;height:320px;
+  top:10%;right:8%;
+  border:1px solid var(--teal);
+  transform:rotate(30deg);
+  clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+}
+.hero-lattice::after{
+  content:'';position:absolute;
+  width:200px;height:200px;
+  top:30%;right:18%;
+  border:1px solid var(--gold);
+  transform:rotate(15deg);
+  clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+}
+.hero-caption{
+  position:absolute;bottom:.75rem;right:1rem;z-index:10;
+  color:rgba(255,255,255,.35);font-family:var(--condensed);font-size:.62rem;
+  letter-spacing:.08em;
+}
+
+/* ══════════ ARTICLE HEADER ══════════ */
+.article-header{
+  max-width:800px;margin:0 auto;
+  padding:3.5rem 2rem 1.5rem;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1.6rem;
+}
+.eyebrow-tag{
+  background:var(--ink);color:var(--gold);
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:4px 12px;
+}
+.eyebrow-line{flex:1;height:1px;background:var(--border)}
+.program-badge{
+  font-family:var(--condensed);font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(0,180,180,.1);border:1px solid rgba(0,180,180,.3);
+  color:var(--teal-dark);padding:3px 10px;white-space:nowrap;
+}
+
+.article-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,5.5vw,3.4rem);
+  font-weight:900;line-height:1.1;
+  color:var(--ink);margin-bottom:1.4rem;
+  letter-spacing:-.02em;
+}
+.article-deck{
+  font-family:var(--body);font-size:1.18rem;
+  font-style:italic;font-weight:300;
+  color:var(--warm-gray);line-height:1.65;
+  margin-bottom:2rem;padding-bottom:2rem;
+  border-bottom:2.5px solid var(--ink);
+}
+.byline-strip{
+  display:flex;align-items:center;gap:1rem;
+  padding-bottom:2rem;border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.byline-avatar{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--teal),#005a5a);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;color:#fff;font-size:.95rem;
+}
+.byline-info{font-family:var(--condensed);font-size:.82rem}
+.byline-name{font-weight:700;color:var(--ink);letter-spacing:.04em}
+.byline-meta{color:var(--warm-gray);letter-spacing:.04em}
+.byline-sep{color:var(--border)}
+
+/* ══════════ BODY ══════════ */
+.article-body{max-width:800px;margin:0 auto;padding:0 2rem 5rem}
+
+/* Section divider */
+.section-divider{
+  display:flex;align-items:center;gap:1rem;
+  margin:4rem 0 1.8rem;
+}
+.sd-label{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--warm-gray);
+  white-space:nowrap;
+}
+.sd-line{flex:1;height:1px;background:var(--border)}
+.sd-dot{width:5px;height:5px;background:var(--teal);flex-shrink:0}
+
+h2.s-title{
+  font-family:var(--serif);
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  font-weight:700;line-height:1.18;
+  margin-bottom:1.3rem;letter-spacing:-.01em;
+}
+.article-body p{
+  margin-bottom:1.4rem;
+  font-size:1.02rem;color:var(--charcoal);
+  font-weight:300;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc{
+  border:1px solid var(--border);border-top:3px solid var(--ink);
+  padding:1.6rem 1.8rem;margin:2rem 0 2.5rem;background:#fff;
+}
+.toc-label{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);
+  margin-bottom:1rem;
+}
+.toc ol{list-style:none;counter-reset:toc-counter}
+.toc li{
+  counter-increment:toc-counter;
+  display:flex;align-items:baseline;gap:.6rem;
+  padding:.35rem 0;border-bottom:1px solid var(--border);
+}
+.toc li:last-child{border-bottom:none}
+.toc li::before{
+  content:counter(toc-counter,'decimal-leading-zero');
+  font-family:var(--condensed);font-size:.7rem;font-weight:700;
+  color:var(--teal-dark);flex-shrink:0;letter-spacing:.04em;
+}
+.toc a{
+  font-family:var(--condensed);font-size:.92rem;font-weight:600;
+  color:var(--ink);text-decoration:none;letter-spacing:.02em;
+  transition:color .15s;
+}
+.toc a:hover{color:var(--teal-dark)}
+
+/* ── PULL QUOTE ── */
+.pull-quote{
+  position:relative;
+  border-left:4px solid var(--teal);
+  padding:1.2rem 0 1.2rem 2rem;
+  margin:2.8rem 0;
+}
+.pull-quote::before{
+  content:'\201C';
+  position:absolute;top:-.5rem;left:1.5rem;
+  font-family:var(--serif);font-size:5rem;line-height:1;
+  color:var(--teal);opacity:.2;pointer-events:none;
+}
+.pull-quote blockquote{
+  font-family:var(--serif);font-size:1.4rem;font-style:italic;
+  font-weight:400;line-height:1.5;color:var(--ink);
+  margin-bottom:.6rem;
+}
+.pull-quote cite{
+  font-family:var(--condensed);font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--warm-gray);
+  font-style:normal;
+}
+
+/* ── CALLOUT BOX ── */
+.callout{
+  background:var(--pale);border-top:3px solid var(--gold);
+  padding:1.6rem 1.8rem;margin:2.5rem 0;
+}
+.callout-label{
+  font-family:var(--condensed);font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:.5rem;
+}
+.callout p{
+  font-family:var(--serif);font-size:1.05rem;
+  color:var(--charcoal);margin-bottom:0!important;font-weight:400;
+}
+
+/* ── CHEM CALLOUT (teal variant) ── */
+.chem-box{
+  background:#f0fafa;
+  border:1px solid rgba(0,180,180,.25);
+  border-left:4px solid var(--teal);
+  padding:1.4rem 1.8rem;margin:2rem 0;
+}
+.chem-box-label{
+  font-family:var(--condensed);font-size:.6rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.9rem;
+}
+.chem-params{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem;
+}
+.chem-param{
+  background:#fff;border:1px solid rgba(0,180,180,.18);
+  padding:.75rem 1rem;
+}
+.chem-param-label{
+  font-family:var(--condensed);font-size:.58rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.25rem;
+}
+.chem-param-value{
+  font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--ink);
+}
+.chem-param-sub{
+  font-family:var(--body);font-size:.8rem;color:var(--warm-gray);font-weight:300;
+}
+
+/* ── CRYSTAL PHOTO GRID ── */
+.crystal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;margin:2rem 0 2.5rem;
+}
+.crystal-card{border:1px solid var(--border);background:#fff;overflow:hidden}
+.crystal-img{
+  width:100%;height:180px;
+  background:linear-gradient(135deg,#061a20 0%,#0c2a34 50%,#041418 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.crystal-img img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
+}
+/* placeholder for missing photos */
+.crystal-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;padding:1rem;text-align:center;height:100%;
+}
+.crystal-placeholder svg{opacity:.35}
+.crystal-placeholder-text{
+  font-family:var(--condensed);font-size:.65rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);
+  line-height:1.4;
+}
+.crystal-card-body{padding:.85rem 1rem 1rem}
+.crystal-card-label{
+  font-family:var(--condensed);font-size:.62rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.25rem;
+}
+.crystal-card-title{
+  font-family:var(--serif);font-size:1.05rem;font-weight:700;margin-bottom:.3rem;
+}
+.crystal-card-desc{
+  font-family:var(--body);font-size:.84rem;color:var(--warm-gray);line-height:1.5;font-weight:300;
+}
+
+/* ── SHOWCASE IMAGE ── */
+.showcase{margin:2rem 0;border:1px solid var(--border)}
+.showcase img{width:100%;display:block;max-height:420px;object-fit:cover;object-position:center}
+.showcase-caption{
+  background:#fff;padding:.85rem 1.2rem;
+  font-family:var(--condensed);font-size:.72rem;
+  color:var(--warm-gray);letter-spacing:.04em;
+  border-top:1px solid var(--border);
+}
+
+/* ── SOURCES ── */
+.sources{
+  margin-top:3.5rem;padding-top:1.8rem;
+  border-top:1px solid var(--border);
+}
+.sources h4{
+  font-family:var(--condensed);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:.8rem;
+}
+.sources p{font-size:.85rem!important;color:var(--warm-gray)!important;margin-bottom:.4rem!important;font-style:italic;word-break:break-all;overflow-wrap:break-word}
+.sources-placeholder{
+  font-family:var(--condensed);font-size:.82rem;color:var(--border);
+  letter-spacing:.08em;padding:.6rem 0;font-style:normal!important;
+}
+
+/* ══════════ FOOTER ══════════ */
+footer{
+  background:var(--ink);color:#666;
+  text-align:center;padding:2.5rem 1.5rem;
+  font-family:var(--condensed);font-size:.72rem;letter-spacing:.1em;
+}
+.footer-logo{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:1rem;
+}
+.footer-logo-box{
+  width:26px;height:26px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+}
+.footer-logo-box svg{width:14px;height:14px}
+.footer-brand{color:#ccc;font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:.72rem}
+.footer-divider{margin:0 .5rem;color:#444}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-up{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:640px){
+  .article-header,.article-body{padding-left:1rem;padding-right:1rem}
+  .article-title{font-size:1.9rem}
+  .article-deck{font-size:1rem}
+  .crystal-grid{grid-template-columns:1fr 1fr}
+  .crystal-img{height:150px}
+  .chem-params{grid-template-columns:1fr 1fr}
+  .pull-quote blockquote{font-size:1.1rem}
+  .pull-quote{padding-left:1.2rem}
+  .hero{height:min(55vh,420px)}
+  .toc{padding:1.2rem 1.2rem}
+  .s-title{font-size:1.5rem}
+  nav{padding:0 1rem}
+  .logo-wordmark span{display:none}
+}
+@media(max-width:420px){
+  .crystal-grid{grid-template-columns:1fr}
+  .crystal-img{height:200px}
+  .article-title{font-size:1.6rem}
+  body{font-size:17px}
+  .chem-params{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="logo-box">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8" stroke="#111" stroke-width="1.5"/>
+        <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="#111" stroke-width="1.5"/>
+        <line x1="2" y1="10" x2="18" y2="10" stroke="#111" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="logo-wordmark">
+      Science &amp; Biology
+      <span>Student Study</span>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-pill">&#8592; History Essay</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img
+    class="hero-img"
+    src="images/alum-crystals.jpg"
+    alt="Potassium alum crystals"
+  />
+  <div class="hero-overlay"></div>
+  <div class="hero-lattice"></div>
+
+  <!-- Hero text -->
+  <div style="position:relative;z-index:10;width:100%;padding:0 2rem 3rem;max-width:800px;margin:0 auto">
+    <div style="font-family:var(--condensed);font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem">Science &amp; Chemistry</div>
+    <div style="font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.7);max-width:500px;line-height:1.5">How order emerges from solution — a hands-on investigation</div>
+  </div>
+
+  <div class="hero-caption">Potassium alum crystals &nbsp;·&nbsp; Photo: Wikimedia Commons</div>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="eyebrow">
+    <div class="eyebrow-tag">Biology &amp; Chemistry</div>
+    <div class="eyebrow-line"></div>
+    <div class="program-badge">Scientist for a Cycle</div>
+  </div>
+  <h1 class="article-title">Studying Crystal Growth Using a Solution of Potassium Alum and Water</h1>
+  <p class="article-deck">A firsthand investigation into how potassium aluminium sulfate nucleates and grows from a supersaturated solution — observing growth rate, shape, and clarity over multiple sessions.</p>
+  <div class="byline-strip">
+    <div class="byline-avatar">C</div>
+    <div class="byline-info">
+      <div class="byline-name">Ceejay Velardi</div>
+      <div class="byline-meta">Science &amp; Biology <span class="byline-sep">|</span> 2026 <span class="byline-sep">|</span> Learnlife</div>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc fade-up">
+    <div class="toc-label">In This Study</div>
+    <ol>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#methods">Methods</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#discussion">Discussion</a></li>
+      <li><a href="#questions">Questions for Future Research</a></li>
+    </ol>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Introduction</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 id="introduction" class="s-title fade-up">Why Study Crystal Growth?</h2>
+
+  <p class="fade-up">In this study I grew a crystal using a solution of potassium aluminium sulfate (KAl(SO₄)₂·12H₂O), which is commonly used to grow crystals, and water (H₂O). I chose this experiment to study how crystals form. During the study I observed and documented the growth rate, shape, and clarity of the crystal and of any residual crystals.</p>
+
+  <div class="pull-quote fade-up">
+    <blockquote>Crystals form as molecules arrange themselves into a repeating, ordered pattern — a rare glimpse of chemistry made visible.</blockquote>
+  </div>
+
+  <!-- METHODS -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Methods</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 id="methods" class="s-title fade-up">Materials and Procedure</h2>
+
+  <!-- Key parameters box -->
+  <div class="chem-box fade-up">
+    <div class="chem-box-label">Key Parameters</div>
+    <div class="chem-params">
+      <div class="chem-param">
+        <div class="chem-param-label">Solute</div>
+        <div class="chem-param-value">KAl(SO₄)₂·12H₂O</div>
+        <div class="chem-param-sub">Potassium aluminium sulfate</div>
+      </div>
+      <div class="chem-param">
+        <div class="chem-param-label">Solvent</div>
+        <div class="chem-param-value">H₂O</div>
+        <div class="chem-param-sub">Distilled or tap water</div>
+      </div>
+      <div class="chem-param">
+        <div class="chem-param-label">Concentration</div>
+        <div class="chem-param-value">1 g / 2 g</div>
+        <div class="chem-param-sub">Alum per water</div>
+      </div>
+      <div class="chem-param">
+        <div class="chem-param-label">Dissolution Temp.</div>
+        <div class="chem-param-value">60 °C</div>
+        <div class="chem-param-sub">Heated to fully dissolve</div>
+      </div>
+      <div class="chem-param">
+        <div class="chem-param-label">Observation Schedule</div>
+        <div class="chem-param-value">Tue &amp; Thu</div>
+        <div class="chem-param-sub">Checked twice weekly</div>
+      </div>
+      <div class="chem-param">
+        <div class="chem-param-label">Suspension Method</div>
+        <div class="chem-param-value">Copper wire</div>
+        <div class="chem-param-sub">Nylon unavailable in lab</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="fade-up">Elements and chemicals used during this study include water (H₂O) and potassium aluminium sulfate (KAl(SO₄)₂·12H₂O). The concentration of the solution was 1 g of potassium aluminium sulfate per 2 g of water. To fully dissolve the potassium alum, the water was heated to 60 °C. The crystal was then hung in the solution contained within a beaker to result in uniform growth.</p>
+
+  <p class="fade-up">To create the seed crystal, I created a small amount of solution and poured it into a large beaker, filling it to about the height of a petri dish. To hang the crystal it is recommended to use nylon fishing wire; however, the lab did not have that on hand, so I had to use copper wire. I checked the crystal on Tuesdays and Thursdays.</p>
+
+  <div class="callout fade-up">
+    <div class="callout-label">Lab Note</div>
+    <p>Nylon is preferred for suspension because it is inert and does not react with the solution. Copper wire was used as a substitute; any effect on crystal purity or geometry was not formally measured in this study.</p>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Results</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 id="results" class="s-title fade-up">Crystal Formation Outcomes</h2>
+
+  <p class="fade-up">In the end the crystals had not formed nearly as geometric as I had hoped; however, they were still quite geometric. The images below document three specimens examined under close inspection from the lab notebook.</p>
+
+  <!-- Crystal photo grid -->
+  <div class="crystal-grid fade-up">
+    <div class="crystal-card">
+      <div class="crystal-img">
+        <div class="crystal-placeholder">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,3 33,11 33,25 18,33 3,25 3,11" stroke="rgba(0,200,200,.6)" stroke-width="1.5" fill="none"/>
+            <polygon points="18,9 27,14 27,22 18,27 9,22 9,14" stroke="rgba(0,200,200,.35)" stroke-width="1" fill="none"/>
+            <line x1="18" y1="3" x2="18" y2="33" stroke="rgba(0,200,200,.25)" stroke-width=".8"/>
+          </svg>
+          <div class="crystal-placeholder-text">Lab Photo<br/>to be inserted</div>
+        </div>
+      </div>
+      <div class="crystal-card-body">
+        <div class="crystal-card-label">Specimen A</div>
+        <div class="crystal-card-title">Shard</div>
+        <p class="crystal-card-desc">Close-up of a shard — a smaller, elongated crystal fragment.</p>
+      </div>
+    </div>
+    <div class="crystal-card">
+      <div class="crystal-img">
+        <div class="crystal-placeholder">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,3 33,11 33,25 18,33 3,25 3,11" stroke="rgba(0,200,200,.6)" stroke-width="1.5" fill="none"/>
+            <polygon points="18,9 27,14 27,22 18,27 9,22 9,14" stroke="rgba(0,200,200,.35)" stroke-width="1" fill="none"/>
+            <line x1="3" y1="18" x2="33" y2="18" stroke="rgba(0,200,200,.25)" stroke-width=".8"/>
+          </svg>
+          <div class="crystal-placeholder-text">Lab Photo<br/>to be inserted</div>
+        </div>
+      </div>
+      <div class="crystal-card-body">
+        <div class="crystal-card-label">Specimen B</div>
+        <div class="crystal-card-title">Chunk</div>
+        <p class="crystal-card-desc">Close-up of a chunk — a mid-sized specimen with visible facets.</p>
+      </div>
+    </div>
+    <div class="crystal-card">
+      <div class="crystal-img">
+        <div class="crystal-placeholder">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,3 33,11 33,25 18,33 3,25 3,11" stroke="rgba(0,200,200,.6)" stroke-width="1.5" fill="none"/>
+            <polygon points="18,9 27,14 27,22 18,27 9,22 9,14" stroke="rgba(0,200,200,.35)" stroke-width="1" fill="none"/>
+            <line x1="18" y1="3" x2="18" y2="33" stroke="rgba(0,200,200,.25)" stroke-width=".8"/>
+            <line x1="3" y1="18" x2="33" y2="18" stroke="rgba(0,200,200,.25)" stroke-width=".8"/>
+          </svg>
+          <div class="crystal-placeholder-text">Lab Photo<br/>to be inserted</div>
+        </div>
+      </div>
+      <div class="crystal-card-body">
+        <div class="crystal-card-label">Specimen C</div>
+        <div class="crystal-card-title">Large Chunk</div>
+        <p class="crystal-card-desc">Close-up of the largest specimen — the primary growth from the beaker.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reference image of what alum crystals look like -->
+  <div class="showcase fade-up">
+    <img src="images/alum-crystals.jpg" alt="Potassium alum crystals — reference specimen"/>
+    <div class="showcase-caption">
+      Reference: Potassium alum crystals exhibiting characteristic octahedral geometry &nbsp;·&nbsp; Wikimedia Commons (CC BY-SA 3.0)
+    </div>
+  </div>
+
+  <!-- DISCUSSION -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Discussion</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 id="discussion" class="s-title fade-up">Why Did the Crystal Form This Way?</h2>
+
+  <p class="fade-up">The crystal formed this way because, as the supersaturated solution cooled, the alum molecules combined into a repeating pattern. Some factors that likely impacted the growth were dust build-up in the solution — which can halt or disrupt growth — alongside the addition of dye to the solution.</p>
+
+  <p class="fade-up">A limitation I faced was having only one small beaker in which to grow the crystals. This constrained the overall size of the final specimen and may have contributed to the irregular geometry observed.</p>
+
+  <div class="pull-quote fade-up">
+    <blockquote>If I were to do this again, I would place a seed crystal on the bottom of the beaker and then hang another above it to create a taller, more uniform crystal.</blockquote>
+    <cite>Ceejay Velardi — Reflection</cite>
+  </div>
+
+  <!-- QUESTIONS FOR FUTURE RESEARCH -->
+  <div class="section-divider fade-up">
+    <div class="sd-dot"></div>
+    <div class="sd-label">Future Research</div>
+    <div class="sd-line"></div>
+  </div>
+
+  <h2 id="questions" class="s-title fade-up">Questions for Future Research</h2>
+
+  <div class="callout fade-up">
+    <div class="callout-label">Open Questions</div>
+    <p>Questions to be developed — what variables (temperature curve, container size, seed quality, wire type) most affect final crystal geometry and clarity?</p>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="sources fade-up">
+    <h4>References</h4>
+    <p class="sources-placeholder">References to be added.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-box">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8" stroke="#111" stroke-width="1.5"/>
+        <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="#111" stroke-width="1.5"/>
+        <line x1="2" y1="10" x2="18" y2="10" stroke="#111" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <span class="footer-brand">Science &amp; Biology</span>
+  </div>
+  <div>
+    Scientist for a Cycle<span class="footer-divider">·</span>2026<span class="footer-divider">·</span>Learnlife
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
